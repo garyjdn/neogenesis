@@ -1,0 +1,71 @@
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/User --migration
+Model created successfully.
+Created Migration: 2017_05_06_170809_create_users_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Status --migration
+Model created successfully.
+Created Migration: 2017_05_06_170839_create_statuses_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Village --migration
+Model created successfully.
+Created Migration: 2017_05_06_170854_create_villages_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/District --migration
+Model created successfully.
+Created Migration: 2017_05_06_170909_create_districts_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/City --migration
+Model created successfully.
+Created Migration: 2017_05_06_170923_create_cities_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Province --migration
+Model created successfully.
+Created Migration: 2017_05_06_171001_create_provinces_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Address --migration
+Model created successfully.
+Created Migration: 2017_05_06_171016_create_addresses_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Category --migration
+Model created successfully.
+Created Migration: 2017_05_06_171057_create_categories_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Attribute --migration
+Model created successfully.
+Created Migration: 2017_05_06_171109_create_attributes_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/CategoryDetail --migration
+Model created successfully.
+Created Migration: 2017_05_06_171147_create_category_details_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/AttributeDetail --migration
+Model created successfully.
+Created Migration: 2017_05_06_171213_create_attribute_details_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Method --migrationModel created successfully.
+Created Migration: 2017_05_06_171233_create_methods_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Shipper --migration
+Model created successfully.
+Created Migration: 2017_05_06_171242_create_shippers_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/ShipperService --migration
+Model created successfully.
+Created Migration: 2017_05_06_171326_create_shipper_services_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Type --migrationModel created successfully.
+Created Migration: 2017_05_06_171344_create_types_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Admin --migration
+Model created successfully.
+Created Migration: 2017_05_06_172337_create_admins_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Product --migration
+Model created successfully.
+Created Migration: 2017_05_06_172616_create_products_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Account --migration
+Model created successfully.
+Created Migration: 2017_05_06_172905_create_accounts_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Order --migration
+Model created successfully.
+Created Migration: 2017_05_06_172938_create_orders_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/OrderDetail --migration
+Model created successfully.
+Created Migration: 2017_05_06_172943_create_order_details_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Retur --migration
+Model created successfully.
+Created Migration: 2017_05_06_172951_create_returs_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/ReturDetail --migration
+Model created successfully.
+Created Migration: 2017_05_06_172957_create_retur_details_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/Review --migration
+Model created successfully.
+Created Migration: 2017_05_06_173005_create_reviews_table
+gary@ubuntu:~/sites/mix$ php artisan make:model Models/WishList --migration
+Model created successfully.
+Created Migration: 2017_05_06_210804_create_wish_lists_table
+
