@@ -28,10 +28,10 @@ Route::post('/user/address/{id/delete}', 'Ecommerce\UserController@deleteAccount
 Route::get('/search', 'Admin\ProductController@searchProduct')->name('ecommerceSearchProduct');
 Route::get('/search/{$nama}/detail', 'Admin\ProductController@showDetailProductPage')->name('ecommerceDetailProduct');
 
-Route::get('/payment/notification/handling', 'Ecommerce\OrderController@midtransAPIWebhook')->name();
-Route::get('/payment/finish', 'Ecommerce\OrderController@redirectFinishPayment');
-Route::get('/payment/unfinish', 'Ecommerce\OrderController@redirectUnfinishPayment');
-Route::get('/payment/error', 'Ecommerce\OrderController@redirectErrorPayment');
+Route::get('/payment/notification/handling', 'Ecommerce\OrderController@midtransAPIWebhook')->name('midtransWebhook');
+Route::get('/payment/finish', 'Ecommerce\OrderController@redirectFinishPayment')->name('midtransFinish');
+Route::get('/payment/unfinish', 'Ecommerce\OrderController@redirectUnfinishPayment')->name('midtransUnfinish');
+Route::get('/payment/error', 'Ecommerce\OrderController@redirectErrorPayment')->name('midtransError');
 
 // Admin
 Route::get('/admin/login', 'Admin\AuthController@showLoginPage')->name('adminLoginPage');
