@@ -19,17 +19,7 @@ class ProductController extends Controller
         return view('admin.product');
     }
 
-    public function searchProduct(Request $request)
-    {
-      $data = $request['q'];
-      if(isset($request['p']))
-      {
-        $page = $request['p'];
-      } else {
-        $page = 1;
-      }
-      return view('ecommerce.home');
-    }
+
 
     /**
      * Show the form for creating a new resource.

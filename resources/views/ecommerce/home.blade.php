@@ -1,41 +1,25 @@
-@extends('layouts.base')
+@extends('layouts.ecommerce')
 
-@section('app')
-  <div id="header">
-    <div class="wrapper">
-      <h1><b>NeoGenesis</b></h1>
-
-      <ul class="header-nav">
-        <li><a href="#">Masuk</a></li>
-        <li><a href="#">Daftar</a></li>
-        <li><a href="#">Cek Pesanan</a></li>
-        <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbspKeranjang Belanja (<span id="sum-cart">2</span>)</a></li>
-        <li><a href="#">Kontak</a></li>
-        <li><a href="#">Bantuan</a></li>
-      </ul>
-    </div>
-  </div>
+@section('inner-app')
 
   <div id="content">
-    <div class="wrapper">
-      <div class="search-area">
-        <form method="GET" action="{{ route('ecommerceSearchProduct') }}" role="search">
-          <div class="select-style">
-            <span class="arr"></span>
-            <select>
-              <option>Pilih Kategori</option>
-              <option>Flashdisk</option>
-              <option>Keyboard</option>
-              <option>Mouse</option>
-              <option>Fan</option>
-              <option>Speaker</option>
-              <option>Headset</option>
-              <option>Charger</option>
-            </select>
-          </div>
-          <input type="text" name="q" placeholder="Cari barang.." id="search-bar">
-          <input type="submit" id="search-button" value="Cari">
-        </form>
+    <div class="search-box">
+      <div class="wrapper">
+        <div class="search-area">
+          <form method="get" action="{{ route('ecommerceSearchProduct') }}" role="search">
+            <div class="select-style">
+              <span class="arr"></span>
+              <select name="c">
+                <option value="0">Pilih Kategori</option>
+                @foreach($categories as $c)
+                <option value="{{$c->id}}">{{$c->value}}</option>
+                @endforeach
+              </select>
+            </div>
+            <input type="text" name="q" placeholder="Cari barang.." id="search-bar">
+            <input type="submit" id="search-button" value="Cari">
+          </form>
+        </div>
       </div>
     </div>
 
@@ -64,8 +48,32 @@
           <h2>Baru</h2>
           <i class="fa fa-info-circle  fa-lg pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="dengan berlangganan anda akan menerima email barang baru kami"></i>
         </div>
-        @component('ecommerce.components.item-list')
-        @endcomponent
+        <div class="item-list">
+          <div class="row">
+            @foreach($products as $p)
+            <a href="{{route('ecommerceProductDetail', ['nama' => (str_replace(' ', '+', $p->name)), 'id' => Crypt::encryptString($p->id)])}}">
+              <div class="item col-md-3">
+                <div class="img-box">
+                  <img src="{{asset('img/'.$p->image)}}">
+                </div>
+                <div class="info-box">
+                  <h5><b>{{$p->name}}</b></h5>
+                  <label class="price">Rp {{$p->price}}</label>
+                  <select class="rating-bar">
+                  @for($i = 1; $i <= 5; $i++)
+                    @if($i == round($p->rating))
+                    <option value="{{$i}}" selected>{{$i}}</option>
+                    @else
+                    <option value="{{$i}}">{{$i}}</option>
+                    @endif
+                  @endfor
+                  </select>
+                </div>
+              </div>
+            </a>
+            @endforeach
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-6 col-sm-12 home-item">
           </div>
@@ -86,8 +94,32 @@
           <h2>Mouse</h2>
           <i class="fa fa-info-circle  fa-lg pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="dengan berlangganan anda akan menerima email barang baru kami"></i>
         </div>
-        @component('ecommerce.components.item-list')
-        @endcomponent
+        <div class="item-list">
+          <div class="row">
+            @foreach($mouses as $m)
+            <a href="{{route('ecommerceProductDetail', ['nama' => (str_replace(' ', '+', $m->name)), 'id' => Crypt::encryptString($m->id)])}}">
+              <div class="item col-md-3">
+                <div class="img-box">
+                  <img src="{{asset('img/'.$m->image)}}">
+                </div>
+                <div class="info-box">
+                  <h5><b>{{$m->name}}</b></h5>
+                  <label class="price">Rp {{$m->price}}</label>
+                  <select class="rating-bar">
+                  @for($i = 1; $i <= 5; $i++)
+                    @if($i == round($m->rating))
+                    <option value="{{$i}}" selected>{{$i}}</option>
+                    @else
+                    <option value="{{$i}}">{{$i}}</option>
+                    @endif
+                  @endfor
+                  </select>
+                </div>
+              </div>
+            </a>
+            @endforeach
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12 col-sm-12 mini-banner">
             <img src="{{asset('img/Blackbird-TKL-6.jpg')}}">
@@ -101,75 +133,36 @@
           <h2>Keyboard</h2>
           <i class="fa fa-info-circle  fa-lg pull-right" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="dengan berlangganan anda akan menerima email barang baru kami"></i>
         </div>
-        @component('ecommerce.components.item-list')
-        @endcomponent
-      </div>
-    </div>
-
-  </div>
-
-  <div id="footer">
-    <div class="dark-filter"></div>
-    <div class="footer-box">
-      <div class="wrapper">
-        <div class="subscribe-box">
-          <div class="vbox">
-            <div class="vitem">
-              <h4><b>Mau dapat info barang terbaru kami?</b></h4>
-              <b>Berlangganan sekarang</b>
-            </div>
-            <div class="pull-right">
-              <input type="email" placeholder="email">&nbsp
-              <input type="submit" class="btn btn-sm btn-danger" value="SUBMIT">
-            </div>
-          </div>
-        </div>
-        <div class="middle-box">
-          <h1>FOLLOW US ON</h1><br>
+        <div class="item-list">
           <div class="row">
-            <div class="col-md-3">
-              <div class="middle-box">
-                <i class="fa fa-facebook-official fa-5x" aria-hidden="true"></i>
-                <div class="middle-box">
-                  <label>Facebook</label>
+            @foreach($keyboards as $k)
+            <a href="{{route('ecommerceProductDetail', ['nama' => (str_replace(' ', '+', $k->name)), 'id' => Crypt::encryptString($k->id)])}}">
+              <div class="item col-md-3">
+                <div class="img-box">
+                  <img src="{{asset('img/'.$k->image)}}">
+                </div>
+                <div class="info-box">
+                  <h5><b>{{$k->name}}</b></h5>
+                  <label class="price">Rp {{$k->price}}</label>
+                  <select class="rating-bar">
+                  @for($i = 1; $i <= 5; $i++)
+                    @if($i == round($k->rating))
+                    <option value="{{$i}}" selected>{{$i}}</option>
+                    @else
+                    <option value="{{$i}}">{{$i}}</option>
+                    @endif
+                  @endfor
+                  </select>
                 </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="middle-box">
-                <i class="fa fa-instagram fa-5x" aria-hidden="true"></i>
-                <div class="middle-box">
-                  <label>Instagram</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="middle-box">
-                <i class="fa fa-twitter-square fa-5x" aria-hidden="true"></i>
-                <div class="middle-box">
-                  <label>Twitter</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="middle-box">
-                <i class="fa fa-weixin fa-5x" aria-hidden="true"></i>
-                <div class="middle-box">
-                  <label>Line</label>
-                </div>
-              </div>
-            </div>
+            </a>
+            @endforeach
           </div>
         </div>
       </div>
     </div>
-    <div class="transparent-bg-box">
-      <div class="middle-box">
-        <div class="circle">
-          <b>NG</b>
-        </div>
-        <p>&copy; 2017 NeoGenesis.com</p>
-      </div>
-    </div>
+
   </div>
+
+
 @endsection

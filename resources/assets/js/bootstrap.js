@@ -7,7 +7,8 @@ window._ = require('lodash');
  */
 
 try {
-    window.$ = global.jQuery = require('jquery');
+    global.$ = global.jQuery = require('jquery');
+    window.swal = require('sweetalert2');
     require('jquery-bar-rating');
     require('bootstrap-sass');
 } catch (e) {}

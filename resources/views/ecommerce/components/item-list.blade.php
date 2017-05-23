@@ -2,7 +2,7 @@
   <div class="row">
     <div class="item col-md-3">
       <div class="img-box">
-        <img src="{{asset('img/fdkingstone.jpg')}}">
+        <img src="{{asset('img/fdtoshiba.jpg')}}">
       </div>
       <div class="info-box">
         <h5><b>Flashdisk Kingstone 32GB</b></h5>
@@ -50,7 +50,7 @@
     </div>
     <div class="item col-md-3">
       <div class="img-box">
-        <img src="{{asset('img/mouselogitech2.png')}}">
+        <img src="{{asset('img/mouselogitech5.png')}}">
       </div>
       <div class="info-box">
         <h5><b>Flashdisk Kingstone 32GB</b></h5>

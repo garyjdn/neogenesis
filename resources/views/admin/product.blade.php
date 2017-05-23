@@ -102,6 +102,8 @@
         $('#table-produk').DataTable({
             responsive: true
         });
+        alert('<?= $kategori ?>');
     });
+
 </script>
 @endsection

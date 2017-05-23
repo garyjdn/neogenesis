@@ -8,6 +8,9 @@
 require('./bootstrap');
 window.Vue = require('vue');
 var $ = require('jquery');
+
+import 'jquery-ui/ui/widgets/datepicker.js';
+import 'sweetalert2/src/sweetalert2.js';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -17,10 +20,19 @@ var $ = require('jquery');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    mounted() {
+        $('#datepicker').datepicker();
+    }
 });
 $('[data-toggle="tooltip"]').tooltip();
 $('.rating-bar').barrating({
   theme: 'fontawesome-stars',
   readonly: true
+});
+$('.addon-datepicker').click(function(){
+    //alert("aaa");
+    var visible = $("#datepicker").datepicker("widget").is(":visible");
+    $("#datepicker").datepicker(visible ? "hide" : "show");
 });

@@ -19,9 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('name', 256);
             $table->string('desc', 5000)->nullable();
             $table->integer('price')->unsigned();
-            $table->integer('weight');
+            $table->integer('weight')->unsigned();
             $table->string('image', 256);
-            $table->float('rating', 2, 1);
+            $table->float('rating', 2, 1)->nullable();
+            $table->integer('total_rate')->unsigned()->nullable();
             $table->string('brand', 32)->nullable();
             $table->string('memory', 32)->nullable();
             $table->timestamps();
